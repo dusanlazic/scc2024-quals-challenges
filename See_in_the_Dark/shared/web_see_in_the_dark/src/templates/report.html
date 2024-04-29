@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}
+Report a bug
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <form id="reportForm" action="/report" method="post">
+        <div class="form-group">
+            <label for="description">Describe what did go wrong:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+        <div class="form-group">
+            <label for="theme">Which theme did you use:</label>
+            <select id="theme" name="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pageUrl">Page URL:</label>
+            <input type="url" id="pageUrl" name="pageUrl" required>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+    <div id="responseArea" style="margin-top: 15px;"></div>
+</div>
+<script>
+    document.getElementById('reportForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const responseArea = document.getElementById('responseArea');
+        const submitButton = document.getElementById('submit');
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        responseArea.innerText = 'Waiting for response. This may take a while...';
+        submitButton.disabled = true;
+
+        fetch('/report', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+            .then(data => {
+                responseArea.innerText = data['message'] || data['error'];
+                submitButton.disabled = false;
+            })
+            .catch(error => {
+                responseArea.innerText = "Check console";
+                submitButton.disabled = false;
+                console.error('Error:', error)
+            });
+    });
+</script>
+
+{% endblock %}

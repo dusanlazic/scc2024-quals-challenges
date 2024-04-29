@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="public/styles.css">
+</head>
+
+<body>
+    <div class="card">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <div id="messageBox" class="is-error is-hidden">
+            <p id="messageContent">...</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const data = {
+                username: username,
+                password: password
+            };
+            const messageBox = document.getElementById("messageBox");
+            const messageContent = document.getElementById("messageContent");
+
+            fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        return response.json().then(err => {
+                            throw new Error(err.error);
+                        });
+                    }
+                })
+                .then(data => {
+                    messageBox.classList.remove("is-hidden");
+                    messageBox.classList.remove("is-error");
+                    messageBox.classList.add("is-success");
+                    messageContent.textContent = data.message;
+                    setTimeout(() => {
+                        window.location.href = "/chat";
+                    }, 1000);
+                })
+                .catch(error => {
+                    messageBox.classList.remove("is-hidden");
+                    messageBox.classList.remove("is-success");
+                    messageBox.classList.add("is-error");
+                    messageContent.textContent = error.message;
+                });
+        });
+    </script>
+</body>
+
+</html>

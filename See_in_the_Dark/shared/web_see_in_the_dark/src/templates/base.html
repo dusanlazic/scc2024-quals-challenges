@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename=theme + '.css') }}">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <div class="search-container">
+                <form action="{{ url_for('search') }}" method="get">
+                    <input type="text" name="q" placeholder="Search..." value="{{ query | safe }}">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="{{ url_for('report') }}" style="font-size: small;">Report a bug</a>
+            <button id="theme-toggle">{{ theme }}</button>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

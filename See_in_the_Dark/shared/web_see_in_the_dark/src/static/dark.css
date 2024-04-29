@@ -1,0 +1,125 @@
+html * {
+    font-family: ui-monospace,
+        Menlo, Monaco,
+        "Cascadia Mono", "Segoe UI Mono",
+        "Roboto Mono",
+        "Oxygen Mono",
+        "Ubuntu Monospace",
+        "Source Code Pro",
+        "Fira Mono",
+        "Droid Sans Mono",
+        monospace !important;
+}
+
+body {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+a {
+    color: #4E9A06;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #222;
+}
+
+.nav-right button {
+    margin-left: 10px;
+}
+
+article {
+    margin: 20px;
+    padding: 20px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #444;
+    color: #ddd;
+}
+
+.posts-list {
+    list-style-type: none;
+}
+
+.posts-list li {
+    background-color: #333;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.posts-list li a {
+    text-decoration: none;
+    color: #ddd;
+    display: block;
+}
+
+.posts-list li a:hover {
+    color: #4E9A06;
+}
+
+.search-container {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #ddd;
+    border-radius: 5px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #555;
+    border: 1px solid #666;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #666;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-container .form-group {
+    margin-bottom: 15px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="url"],
+.form-container input[type="text"],
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border-radius: 5px;
+}

@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card label {
+    margin-bottom: 10px;
+}
+
+.card input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.card button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #45a049;
+}
+
+#messageBox {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.is-error {
+    border: 1px solid hsl(0, 28%, 48%);
+    background-color: hsl(0, 100%, 97%);
+}
+
+.is-success {
+    border: 1px solid hsl(120, 28%, 48%);
+    background-color: hsl(120, 100%, 97%);
+}
+
+.is-hidden {
+    visibility: hidden;
+}
